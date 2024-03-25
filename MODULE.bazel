@@ -1,0 +1,10 @@
+"Mimic Game Engine"
+
+module(
+    name = "mimic",
+    repo_name = "com.ae.mimic",
+)
+
+bazel_dep(name = "platforms", version = "0.0.9")
+bazel_dep(name = "bazel_skylib", version = "1.5.0")
+bazel_dep(name = "catch2", version = "3.5.3")
