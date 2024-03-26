@@ -18,3 +18,8 @@ To test:
 ```bash
 $ bazel test test:all
 ```
+
+Rebuild `compile_commands.json`:
+```bash
+$ bazel run @hedron_compile_commands//:refresh_all
+```

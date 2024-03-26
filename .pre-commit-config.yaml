@@ -1,0 +1,15 @@
+repos:
+  - repo: local
+    hooks:
+      - id: clang-tidy
+        name: Clang Tidy
+        language: system
+        entry: clang-tidy
+        files: ^.*\.[hc](?:pp)?$
+        types: ["text"]
+      - id: clang-format
+        name: Clang Format
+        language: system
+        entry: clang-format
+        files: ^.*\.[hc](?:pp)?$
+        types: ["text"]

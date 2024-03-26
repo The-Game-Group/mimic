@@ -2,3 +2,8 @@ alias(
     name = "mimic",
     actual = "//mimic:mimic",
 )
+
+alias(
+    name = "format",
+    actual = "//tools/format",
+)

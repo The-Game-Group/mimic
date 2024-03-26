@@ -1,15 +1,15 @@
 #include "mimic/mimic.hpp"
-#include <vector>
-#include <string>
 #include <catch2/catch_all.hpp>
+#include <string>
+#include <vector>
 
 TEST_CASE("Mimic runs.") {
-    mimic();
+  mimic();
 
-    std::vector<std::string> vec;
-    vec.push_back("test_package");
+  std::vector<std::string> vec;
+  vec.push_back("test_package");
 
-    // mimic_print_vector(vec);
+  // mimic_print_vector(vec);
 
-    REQUIRE(vec.size() == 1);
+  REQUIRE(vec.size() == 1);
 }
