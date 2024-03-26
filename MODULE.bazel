@@ -7,4 +7,11 @@ module(
 
 bazel_dep(name = "platforms", version = "0.0.9")
 bazel_dep(name = "bazel_skylib", version = "1.5.0")
-bazel_dep(name = "catch2", version = "3.5.3")
+bazel_dep(name = "catch2", version = "3.5.3", dev_dependency = True)
+
+bazel_dep(name = "hedron_compile_commands", dev_dependency = True)
+git_override(
+    module_name = "hedron_compile_commands",
+    remote = "https://github.com/hedronvision/bazel-compile-commands-extractor.git",
+    commit = "5bcb0bd8a917b2b48fb5dc55818515f4be3b63ff",
+)
