@@ -39,6 +39,7 @@ FetchContent_Declare(
 	GIT_TAG v${GLAD_VERSION}
 	GIT_SHALLOW TRUE
 	GIT_PROGRESS TRUE
+	GIT_SHALLOW 1
 )
 
 FetchContent_GetProperties(libglad)
@@ -57,6 +58,7 @@ FetchContent_Declare(
 	GIT_REPOSITORY https://github.com/glfw/glfw.git
 	GIT_TAG ${GLFW_VERSION}
 	GIT_PROGRESS TRUE
+	GIT_SHALLOW 1
 )
 
 set(GLFW_INSTALL OFF)
@@ -75,6 +77,7 @@ FetchContent_Declare(
 	GIT_TAG v${VULKAN_VERSION}
 	GIT_SHALLOW TRUE
 	GIT_PROGRESS TRUE
+	GIT_SHALLOW 1
 )
 
 set(PROJECT_IS_TOP_LEVEL OFF)
@@ -90,6 +93,7 @@ FetchContent_Declare(
 	GIT_TAG v${VULKAN_VERSION}
 	GIT_SHALLOW TRUE
 	GIT_PROGRESS TRUE
+	GIT_SHALLOW 1
 )
 
 FetchContent_GetProperties(vulkanhpp)
@@ -109,6 +113,7 @@ FetchContent_Declare(
 	GIT_REPOSITORY https://github.com/ocornut/imgui.git
 	GIT_TAG v${IMGUI_VERSION}
 	GIT_PROGRESS TRUE
+	GIT_SHALLOW 1
 )
 
 FetchContent_GetProperties(imgui)
@@ -124,6 +129,7 @@ FetchContent_Declare(
 	GIT_REPOSITORY https://github.com/g-truc/glm.git
 	GIT_TAG ${GLM_VERSION}
 	GIT_PROGRESS TRUE
+	GIT_SHALLOW 1
 )
 
 set(GLM_ENABLE_CXX_17 ON)
@@ -133,7 +139,7 @@ FetchContent_MakeAvailable(libglm)
 # =====================
 # Mimic, finally
 # ======================
-project(mimic VERSION 0.1.0 LANGUAGES CXX)
+project(mimic VERSION 0.1.0 LANGUAGES C CXX)
 
 # because MS doesn't respect standards..
 if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
