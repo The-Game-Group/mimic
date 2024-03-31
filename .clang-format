@@ -1,1 +1,6 @@
 BasedOnStyle: chromium
+IndentPPDirectives: AfterHash
+NamespaceIndentation: Inner
+UseTab: ForIndentation
+IncludeBlocks: Regroup
+KeepEmptyLinesAtTheStartOfBlocks: true

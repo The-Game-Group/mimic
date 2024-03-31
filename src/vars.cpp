@@ -1,8 +1,8 @@
-#include "mimic.hpp"
+#include "vars.hpp"
+
 #include <iostream>
 
 void mimic() {
-
 #ifdef NDEBUG
   std::cout << "mimic/0.1.0: Hello World Release!\n";
 #else
@@ -42,17 +42,17 @@ void mimic() {
 
 // MSVC runtime
 #if defined(_DEBUG)
-#if defined(_MT) && defined(_DLL)
+#  if defined(_MT) && defined(_DLL)
   std::cout << "  mimic/0.1.0: MSVC runtime: MultiThreadedDebugDLL\n";
-#elif defined(_MT)
+#  elif defined(_MT)
   std::cout << "  mimic/0.1.0: MSVC runtime: MultiThreadedDebug\n";
-#endif
+#  endif
 #else
-#if defined(_MT) && defined(_DLL)
+#  if defined(_MT) && defined(_DLL)
   std::cout << "  mimic/0.1.0: MSVC runtime: MultiThreadedDLL\n";
-#elif defined(_MT)
+#  elif defined(_MT)
   std::cout << "  mimic/0.1.0: MSVC runtime: MultiThreaded\n";
-#endif
+#  endif
 #endif
 
 // COMPILER VERSIONS
@@ -112,7 +112,7 @@ void mimic() {
 #endif
 }
 
-void mimic_print_vector(const std::vector<std::string> &strings) {
+void mimic_print_vector(const std::vector<std::string>& strings) {
   for (std::vector<std::string>::const_iterator it = strings.begin();
        it != strings.end(); ++it) {
     std::cout << "mimic/0.1.0 " << *it << std::endl;

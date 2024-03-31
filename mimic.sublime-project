@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"follow_symlinks": true
+		}
+	],
+	"settings": {
+		"ClangFormat": {
+			"format_on_save": true
+		}
+	},
+	"build_systems": [
+		{
+			"name": "CMake - Debug",
+			"working_dir": "$project_path",
+			"shell_cmd": "cmake -D CMAKE_BUILD_TYPE=Debug -B $project_path/build/ -S $project_path && cmake --build $project_path/build/ --config Debug",
+		},
+		{
+			"name": "CMake - Release",
+			"working_dir": "$project_path",
+			"shell_cmd": "cmake -D CMAKE_BUILD_TYPE=Release -B $project_path/build/ -S $project_path && cmake --build $project_path/build/ --config Release"
+		},
+		{
+			"name": "CMake - Compile Commands",
+			"working_dir": "$project_path/build",
+			"shell_cmd": "cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 $project_path"
+		}
+	]
+}

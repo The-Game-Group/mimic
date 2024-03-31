@@ -1,9 +1,0 @@
-cc_test(
-    name = "runs",
-    srcs = ["runs.cpp"],
-    #defines = ["CATCH_CONFIG_MAIN"],
-    deps = [
-        "@catch2//:catch2_main",
-        "//mimic"
-    ]
-)

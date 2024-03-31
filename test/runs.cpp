@@ -1,5 +1,5 @@
-#include "mimic/mimic.hpp"
 #include <catch2/catch_all.hpp>
+#include <mimic/mimic.hpp>
 #include <string>
 #include <vector>
 
