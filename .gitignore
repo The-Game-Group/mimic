@@ -13,4 +13,5 @@ _deps
 
 compile_commands.json
 build/
+.cache/
 mimic.sublime-workspace

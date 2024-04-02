@@ -3,7 +3,7 @@ include(FetchContent)
 
 # Setting up options for later
 # ------------------------
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(VULKAN_VER_MAJOR 1)
@@ -132,7 +132,7 @@ FetchContent_Declare(
 	GIT_SHALLOW 1
 )
 
-set(GLM_ENABLE_CXX_17 ON)
+set(GLM_ENABLE_CXX_20 ON)
 FetchContent_MakeAvailable(libglm)
 
 
