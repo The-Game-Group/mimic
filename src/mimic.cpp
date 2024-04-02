@@ -1,53 +1,25 @@
 // Test entry point
 
-#define GLAD_VULKAN_IMPLEMENTATION
-#include <glad/vulkan.h>
+// #define GLAD_VULKAN_IMPLEMENTATION
+// #include <glad/vulkan.h>
 
-#define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
-
-#include <cstdlib>
-#include <iostream>
-#include <stdexcept>
-
-#include "vars.hpp"
+#include "mimic.hpp"
 
 const uint32_t WIDTH = 1920;
 const uint32_t HEIGHT = 1080;
 
-GLFWwindow* initWindow() {
-  glfwInit();
+namespace mimic {
+Engine::Engine(const char* application_name)
+    : client_name{application_name}, window(WIDTH, HEIGHT, application_name) {}
 
-  glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-  glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-
-  return glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", nullptr, nullptr);
+Engine::~Engine() {
+  this->window.close();
 }
 
-void runLoop(GLFWwindow* window) {
-  while (!glfwWindowShouldClose(window)) {
-    glfwPollEvents();
+void Engine::run() {
+  while (!this->window.should_close()) {
+    this->window.poll_events();
   }
 }
 
-void cleanup(GLFWwindow* window) {
-  glfwDestroyWindow(window);
-  glfwTerminate();
-}
-
-int run() {
-  mimic();
-
-  GLFWwindow* window;
-
-  try {
-    window = initWindow();
-    runLoop(window);
-    cleanup(window);
-  } catch (const std::exception& e) {
-    std::cerr << e.what() << std::endl;
-    return EXIT_FAILURE;
-  }
-
-  return EXIT_SUCCESS;
-}
+}  // namespace mimic
