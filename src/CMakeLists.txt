@@ -33,6 +33,7 @@ FetchContent_Declare(
 set(GLFW_INSTALL OFF)
 set(GLFW_BUILD_DOCS OFF)
 set(GLFW_BUILD_COCOA OFF)
+set(GLFW_BUILD_X11 ON)
 set(GLFW_BUILD_WAYLAND OFF)
 FetchContent_MakeAvailable(libglfw)
 
