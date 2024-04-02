@@ -139,11 +139,23 @@ FetchContent_MakeAvailable(libglm)
 # =====================
 # Mimic, finally
 # ======================
-project(mimic VERSION 0.1.0 LANGUAGES C CXX)
+project(mimic VERSION 0.1.0)
 
 # because MS doesn't respect standards..
 if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-	add_compile_options(/permissive- /volatile:iso /Zc:preprocessor /EHsc /Zc:__cplusplus /Zc:externConstexpr /Zc:throwingNew /EHsc)
+	add_compile_options(/permissive- /volatile:iso /Zc:preprocessor /EHsc /Zc:__cplusplus /Zc:externConstexpr /Zc:throwingNew /EHsc /W4 /wd4146 /wd4245 /RTCcsu)
+	if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+		add_compile_options(/Z7)
+	endif()
+endif()
+
+# Adding extra warning flags
+# --------------------------
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+	add_compile_options(-Wall -Wextra -Wdouble-promotion -Wno-unused-parameter -Wno-unused-function -Wconversion -Wno-sign-conversion -fsanitize=undefined -fsanitize-trap)
+	if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+		add_compile_options(-g3)
+	endif()
 endif()
 
 set(MIMIC_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
