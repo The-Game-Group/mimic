@@ -7,7 +7,6 @@ FetchContent_Declare(
     GIT_TAG v${GLAD_VERSION}
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
-    GIT_SHALLOW TRUE
 )
 
 FetchContent_GetProperties(libglad)
@@ -65,7 +64,6 @@ FetchContent_Declare(
     GIT_TAG v${VULKAN_VERSION}
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
-    GIT_SHALLOW TRUE
 )
 
 set(PROJECT_IS_TOP_LEVEL OFF)
@@ -81,7 +79,6 @@ FetchContent_Declare(
     GIT_TAG v${VULKAN_VERSION}
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
-    GIT_SHALLOW TRUE
 )
 
 FetchContent_GetProperties(vulkanhpp)
