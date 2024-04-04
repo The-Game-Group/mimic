@@ -3,15 +3,15 @@
 #include "window.hpp"
 
 namespace mimic {
-class Engine {
- public:
-  Engine(const char* application_name);
-  ~Engine();
+	class Engine {
+	 public:
+		Engine(const char* application_name);
+		~Engine();
 
-  void run();
+		void run();
 
- private:
-  const char* client_name;
-  mimic::Window window;
-};
+	 private:
+		const char*   client_name;
+		mimic::Window window;
+	};
 }  // namespace mimic

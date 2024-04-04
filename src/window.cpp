@@ -5,33 +5,32 @@
 #include <stdexcept>
 
 namespace mimic {
-Window::Window(uint32_t width, uint32_t height, const char* title) {
-  if (glfwInit() != GLFW_TRUE) {
-    throw std::runtime_error("GLFW failed to initialize!");
-  }
+	Window::Window(uint32_t width, uint32_t height, const char* title) {
+		if (!glfwInit()) {
+			throw std::runtime_error("GLFW: This platform is not supported.");
+		}
 
-  glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+		glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 
-  glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+		glfwWindowHint(GLFW_RESIZABLE, false);
 
-  this->window = glfwCreateWindow(width, height, title, nullptr, nullptr);
-}
+		this->window = glfwCreateWindow(width, height, title, nullptr, nullptr);
+	}
 
-Window::~Window() {
-  glfwDestroyWindow(this->window);
-  glfwTerminate();
-}
+	Window::~Window() {
+		glfwDestroyWindow(this->window);
+		glfwTerminate();
+	}
 
-void Window::close() {
-  glfwWindowShouldClose(this->window);
-}
+	void Window::close() {
+		glfwWindowShouldClose(this->window);
+	}
 
-bool Window::should_close() {
-  return glfwWindowShouldClose(this->window);
-}
+	bool Window::should_close() {
+		return glfwWindowShouldClose(this->window);
+	}
 
-void Window::poll_events() {
-  glfwPollEvents();
-}
-
+	void Window::poll_events() {
+		glfwPollEvents();
+	}
 }  // namespace mimic

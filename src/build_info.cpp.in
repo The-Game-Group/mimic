@@ -17,126 +17,129 @@ const char* VERSION_TWEAK = "@PROJECT_VERSION_TWEAK@";
 // clang-format on
 
 namespace mimic {
-void print_debug() {
+	void print_debug() {
 #ifdef NDEBUG
-  std::cout << "Release Mode\n";
+		std::cout << "Release Mode\n";
 #else
-  std::cout << "Debug Mode\n";
+		std::cout << "Debug Mode\n";
 #endif
 
 // ARCHITECTURES
 #ifdef _M_X64
-  std::cout << "  _M_X64 defined\n";
+		std::cout << "  _M_X64 defined\n";
 #endif
 
 #ifdef _M_IX86
-  std::cout << "  _M_IX86 defined\n";
+		std::cout << "  _M_IX86 defined\n";
 #endif
 
 #ifdef _M_ARM64
-  std::cout << "  _M_ARM64 defined\n";
+		std::cout << "  _M_ARM64 defined\n";
 #endif
 
 #if __i386__
-  std::cout << "  __i386__ defined\n";
+		std::cout << "  __i386__ defined\n";
 #endif
 
 #if __x86_64__
-  std::cout << "  __x86_64__ defined\n";
+		std::cout << "  __x86_64__ defined\n";
 #endif
 
 #if __aarch64__
-  std::cout << "  __aarch64__ defined\n";
+		std::cout << "  __aarch64__ defined\n";
 #endif
 
 // Libstdc++
 #if defined _GLIBCXX_USE_CXX11_ABI
-  std::cout << "  _GLIBCXX_USE_CXX11_ABI " << _GLIBCXX_USE_CXX11_ABI << "\n";
+		std::cout << "  _GLIBCXX_USE_CXX11_ABI " << _GLIBCXX_USE_CXX11_ABI << "\n";
 #endif
 
 // MSVC runtime
 #if defined(_DEBUG)
-#  if defined(_MT) && defined(_DLL)
-  std::cout << "  MSVC runtime: MultiThreadedDebugDLL\n";
-#  elif defined(_MT)
-  std::cout << "  MSVC runtime: MultiThreadedDebug\n";
-#  endif
+#	if defined(_MT) && defined(_DLL)
+		std::cout << "  MSVC runtime: MultiThreadedDebugDLL\n";
+#	elif defined(_MT)
+		std::cout << "  MSVC runtime: MultiThreadedDebug\n";
+#	endif
 #else
-#  if defined(_MT) && defined(_DLL)
-  std::cout << "  MSVC runtime: MultiThreadedDLL\n";
-#  elif defined(_MT)
-  std::cout << "  MSVC runtime: MultiThreaded\n";
-#  endif
+#	if defined(_MT) && defined(_DLL)
+		std::cout << "  MSVC runtime: MultiThreadedDLL\n";
+#	elif defined(_MT)
+		std::cout << "  MSVC runtime: MultiThreaded\n";
+#	endif
 #endif
 
 // COMPILER VERSIONS
 #if _MSC_VER
-  std::cout << "  _MSC_VER" << _MSC_VER << "\n";
+		std::cout << "  _MSC_VER" << _MSC_VER << "\n";
 #endif
 
 #if _MSVC_LANG
-  std::cout << "  _MSVC_LANG" << _MSVC_LANG << "\n";
+		std::cout << "  _MSVC_LANG" << _MSVC_LANG << "\n";
 #endif
 
 #if __cplusplus
-  std::cout << "  __cplusplus" << __cplusplus << "\n";
+		std::cout << "  __cplusplus" << __cplusplus << "\n";
 #endif
 
 #if __INTEL_COMPILER
-  std::cout << "  _INTEL_COMPILER" << __INTEL_COMPILER << "\n";
+		std::cout << "  _INTEL_COMPILER" << __INTEL_COMPILER << "\n";
 #endif
 
 #if __GNUC__
-  std::cout << "  __GNUC__" << __GNUC__ << "\n";
+		std::cout << "  __GNUC__" << __GNUC__ << "\n";
 #endif
 
 #if __GNUC_MINOR__
-  std::cout << "  __GNUC_MINOR__" << __GNUC_MINOR__ << "\n";
+		std::cout << "  __GNUC_MINOR__" << __GNUC_MINOR__ << "\n";
 #endif
 
 #if __clang_major__
-  std::cout << "  __clang_major__" << __clang_major__ << "\n";
+		std::cout << "  __clang_major__" << __clang_major__ << "\n";
 #endif
 
 #if __clang_minor__
-  std::cout << "  __clang_minor__" << __clang_minor__ << "\n";
+		std::cout << "  __clang_minor__" << __clang_minor__ << "\n";
 #endif
 
 #if __apple_build_version__
-  std::cout << "  __apple_build_version__" << __apple_build_version__ << "\n";
+		std::cout << "  __apple_build_version__" << __apple_build_version__ << "\n";
 #endif
 
-  // SUBSYSTEMS
+		// SUBSYSTEMS
 
 #if __MSYS__
-  std::cout << "  __MSYS__" << __MSYS__ << "\n";
+		std::cout << "  __MSYS__" << __MSYS__ << "\n";
 #endif
 
 #if __MINGW32__
-  std::cout << "  __MINGW32__" << __MINGW32__ << "\n";
+		std::cout << "  __MINGW32__" << __MINGW32__ << "\n";
 #endif
 
 #if __MINGW64__
-  std::cout << "  __MINGW64__" << __MINGW64__ << "\n";
+		std::cout << "  __MINGW64__" << __MINGW64__ << "\n";
 #endif
 
 #if __CYGWIN__
-  std::cout << "  __CYGWIN__" << __CYGWIN__ << "\n";
+		std::cout << "  __CYGWIN__" << __CYGWIN__ << "\n";
 #endif
 
 #ifdef APPLE
-  std::cout << "  MacOS" << "\n";
+		std::cout << "  MacOS"
+		          << "\n";
 #endif
 
 #ifdef LINUX
-  std::cout << "  Linux (pog)" << "\n";
+		std::cout << "  Linux (pog)"
+		          << "\n";
 #endif
 
 #ifdef WIN32
-  std::cout << "  Windows (how did you get here?)" << "\n";
+		std::cout << "  Windows (how did you get here?)"
+		          << "\n";
 #endif
 
-  std::cout << "\n! " << NAME << "/" << VERSION << " !" << std::endl;
-}
+		std::cout << "\n! " << NAME << "/" << VERSION << " !" << std::endl;
+	}
 
 }  // namespace mimic

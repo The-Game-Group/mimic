@@ -1,5 +1,5 @@
 #pragma once
 
 namespace mimic {
-    void print_debug();
+	void print_debug();
 }
