@@ -30,6 +30,9 @@ let
     xorg.xcbutilrenderutil
     xorg.xcbutil
     xcb-util-cursor
+
+    wayland.dev
+    libxkbcommon
   ];
 in stdenv.mkDerivation {
   name = "mimic";
@@ -50,9 +53,12 @@ in stdenv.mkDerivation {
     libiconv
     libffi
     python311Packages.jinja2
+
+    # glfw # x11
+    glfw-wayland
   ] ++ graphics_dependencies;
 
-  shellHook = ''
-    pre-commit install
-  '';
+  #shellHook = ''
+  #  pre-commit install
+  #'';
 }

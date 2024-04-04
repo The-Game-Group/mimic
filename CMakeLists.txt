@@ -1,11 +1,17 @@
 cmake_minimum_required(VERSION 3.5..)
 include(FetchContent)
+find_package(PkgConfig)
 
 project(mimic VERSION 0.1.0)
 
 if (POLICY CMP0115)
 	cmake_policy(SET CMP0115 NEW)
 endif()
+
+if(UNIX AND NOT APPLE)
+    set(LINUX TRUE)
+endif()
+
 # Setting up options for later
 # ------------------------
 set(CMAKE_CXX_STANDARD 20)
@@ -43,7 +49,7 @@ FetchContent_Declare(
 	GIT_REPOSITORY https://github.com/ocornut/imgui.git
 	GIT_TAG v${IMGUI_VERSION}
 	GIT_PROGRESS TRUE
-	GIT_SHALLOW 1
+	GIT_SHALLOW TRUE
 )
 
 FetchContent_GetProperties(imgui)
@@ -59,7 +65,7 @@ FetchContent_Declare(
 	GIT_REPOSITORY https://github.com/g-truc/glm.git
 	GIT_TAG ${GLM_VERSION}
 	GIT_PROGRESS TRUE
-	GIT_SHALLOW 1
+	GIT_SHALLOW TRUE
 )
 
 set(GLM_ENABLE_CXX_20 ON)

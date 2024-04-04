@@ -1,4 +1,3 @@
-
 # GLAD
 # ----------------------------
 message(STATUS "Pulling GLAD")
@@ -8,7 +7,7 @@ FetchContent_Declare(
     GIT_TAG v${GLAD_VERSION}
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
-    GIT_SHALLOW 1
+    GIT_SHALLOW TRUE
 )
 
 FetchContent_GetProperties(libglad)
@@ -21,22 +20,41 @@ glad_add_library(glad_vulkan STATIC REPRODUCIBLE LOADER API vulkan=${VULKAN_VER_
 
 # GLFW
 # ----------------------------
-message(STATUS "Pulling GLFW")
-FetchContent_Declare(
-    libglfw
-    GIT_REPOSITORY https://github.com/glfw/glfw.git
-    GIT_TAG ${GLFW_VERSION}
-    GIT_PROGRESS TRUE
-    GIT_SHALLOW 1
-)
+if (${PkgConfig_FOUND})
+	pkg_check_modules(GLFW3 glfw3)
 
-set(GLFW_INSTALL OFF)
-set(GLFW_BUILD_DOCS OFF)
-set(GLFW_BUILD_COCOA OFF)
-set(GLFW_BUILD_X11 ON)
-set(GLFW_BUILD_WAYLAND OFF)
-FetchContent_MakeAvailable(libglfw)
+    if(NOT ${GLFW3_FOUND})
+        pkg_check_modules(X11 x11)
+        pkg_check_modules(WAYLAND wayland-client)
+    endif()
+endif()
 
+if(NOT ${GLFW3_FOUND})
+	message(STATUS "Pulling GLFW")
+	FetchContent_Declare(
+		libglfw
+		GIT_REPOSITORY https://github.com/glfw/glfw.git
+		GIT_TAG ${GLFW_VERSION}
+		GIT_PROGRESS TRUE
+		GIT_SHALLOW TRUE
+	)
+
+	set(GLFW_INSTALL OFF)
+	set(GLFW_BUILD_DOCS OFF)
+	set(GLFW_BUILD_COCOA OFF)
+
+    if(${X11_FOUND})
+        set(GLFW_BUILD_X11 ON)
+    elseif(${WAYLAND_FOUND})
+	    set(GLFW_BUILD_WAYLAND ON)
+    elseif(${LINUX})
+        message(WARNING "GLFW should have either Wayland or X11 on Linux")
+    endif()
+
+	FetchContent_MakeAvailable(libglfw)
+else()
+    message(STATUS "Using system GLFW")
+endif()
 
 # Vulkan C Headers
 # --------------------------------------
@@ -47,7 +65,7 @@ FetchContent_Declare(
     GIT_TAG v${VULKAN_VERSION}
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
-    GIT_SHALLOW 1
+    GIT_SHALLOW TRUE
 )
 
 set(PROJECT_IS_TOP_LEVEL OFF)
@@ -63,7 +81,7 @@ FetchContent_Declare(
     GIT_TAG v${VULKAN_VERSION}
     GIT_SHALLOW TRUE
     GIT_PROGRESS TRUE
-    GIT_SHALLOW 1
+    GIT_SHALLOW TRUE
 )
 
 FetchContent_GetProperties(vulkanhpp)
