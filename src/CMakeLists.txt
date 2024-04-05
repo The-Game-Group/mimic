@@ -118,7 +118,6 @@ configure_file(build_info.cpp.in build_info.cpp @ONLY)
 add_library(mimic STATIC
     mimic.cpp mimic.hpp
     window.cpp window.hpp
-    version.cpp version.hpp
     build_info.cpp build_info.hpp
 )
 
