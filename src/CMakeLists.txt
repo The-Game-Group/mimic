@@ -28,7 +28,9 @@ if (${PkgConfig_FOUND})
     endif()
 endif()
 
-if(NOT ${GLFW3_FOUND})
+if(${GLFW3_FOUND})
+    message(STATUS "Using system GLFW")
+else()
 	message(STATUS "Pulling GLFW")
 	FetchContent_Declare(
 		libglfw
@@ -51,8 +53,6 @@ if(NOT ${GLFW3_FOUND})
     endif()
 
 	FetchContent_MakeAvailable(libglfw)
-else()
-    message(STATUS "Using system GLFW")
 endif()
 
 # Vulkan C Headers
@@ -118,6 +118,7 @@ configure_file(build_info.cpp.in build_info.cpp @ONLY)
 add_library(mimic STATIC
     mimic.cpp mimic.hpp
     window.cpp window.hpp
+    version.cpp version.hpp
     build_info.cpp build_info.hpp
 )
 
